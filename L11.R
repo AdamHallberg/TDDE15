@@ -7,10 +7,9 @@ library(bnlearn)
 library(gRain)
 library(Rgraphviz)
 
-# ---- Load Asia dataset ----
-data("asia") # From bnlearn
+data("asia")
 
-# ---- Hill-climbing algorithms ----
+#' ## Hill-Climbing Algorithms
 #' Multiple runs of the hill-climbing algorithm can return non-equivalent BN structures.
 #' We demonstrate this by running hc twice with different seeds.
 #'
@@ -29,7 +28,7 @@ data("asia") # From bnlearn
 #'        The parameter `iss` (imaginary sample size) controls the weight of the prior.
 #'        Different values of `iss` can lead to different structures.
 
-# ---- BIC comparison ----
+#' ## BIC comparison 
 set.seed(42)
 random_init <- random.graph(nodes = names(asia))
 bn1_bic <- hc(asia, score = "bic", start = random_init)
@@ -49,7 +48,7 @@ all.equal(cpdag(bn1_bic), cpdag(bn2_bic))   # TRUE means equivalent, FALSE means
 graphviz.plot(bn1_bic, main = "Hill-climbing Run 1, BIC")
 graphviz.plot(bn2_bic, main = "Hill-climbing Run 2, BIC")
 
-# ---- BDe comparison ----
+#' ## BDe comparison
 set.seed(42)
 random_init <- random.graph(nodes = names(asia))
 bn1_bde <- hc(asia, score = "bde", iss = 10, start = random_init)
@@ -69,7 +68,7 @@ all.equal(cpdag(bn1_bde), cpdag(bn2_bde))   # TRUE means equivalent, FALSE means
 graphviz.plot(bn1_bde, main = "Hill-climbing Run 1, BDE")
 graphviz.plot(bn2_bde, main = "Hill-climbing Run 2, BDE")
 
-# ---- Discussion ----
+#' ## Discussion
 #' The question was:
 #'
 #' Show that multiple runs of the hill-climbing algorithm can return non-equivalent 
@@ -83,6 +82,6 @@ graphviz.plot(bn2_bde, main = "Hill-climbing Run 2, BDE")
 #' In our code the use of seeds does not affect how we partition the data, it 
 #' only affects the initial graph structure. Since the final graph depends on 
 #' the initial graph. However the algorithm is deterministic given the same 
-#' initial graph. So given the same data partition we see that we converge
-#' to different solutions given different initial graphs.
+#' initial graph. So given the same data we see that we converge to different
+#'solutions given different initial graphs.
 
