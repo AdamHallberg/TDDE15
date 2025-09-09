@@ -74,14 +74,15 @@ graphviz.plot(bn2_bde, main = "Hill-climbing Run 2, BDE")
 #'
 #' Show that multiple runs of the hill-climbing algorithm can return non-equivalent 
 #' Bayesian network (BN) structures. Explain why this happens. Use the Asia 
-#' dataset which is included in the bnlearn package. To load the data, 
+#' data set which is included in the bnlearn package. To load the data, 
 #' run data("asia"). Recall from the lectures that the concept of non-equivalent
 #' BN structures has a precise meaning.
 #' 
 #' Answer:
-#' When we use different seeds we see that we produce non-euqivivalent graphs. 
+#' When we use different seeds we see that we produce non-equivalent graphs. 
 #' In our code the use of seeds does not affect how we partition the data, it 
 #' only affects the initial graph structure. Since the final graph depends on 
-#' the initial graph. Howevber the algorighm is deterministic given the same 
-#' initial graph.
+#' the initial graph. However the algorithm is deterministic given the same 
+#' initial graph. So given the same data partition we see that we converge
+#' to different solutions given different initial graphs.
 
