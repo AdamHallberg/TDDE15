@@ -1,12 +1,4 @@
-# Install needed packages if not already installed
-if(!require(bnlearn)) install.packages("bnlearn")
-if(!require(gRain)) install.packages("gRain")
-if(!require(Rgraphviz)) BiocManager::install("Rgraphviz")
-
-library(bnlearn)
-library(gRain)
-library(Rgraphviz)
-
+# Load data set
 data("asia")
 
 #' ## Hill-Climbing Algorithms
